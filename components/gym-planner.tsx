@@ -119,38 +119,38 @@ export function GymPlannerComponent() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="bg-primary text-primary-foreground py-4 text-center fixed top-0 left-0 right-0 z-10">
-        <h1 className="text-2xl font-bold">Gym Planner</h1>
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+      <header className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-6 text-center fixed top-0 left-0 right-0 z-10 shadow-lg">
+        <h1 className="text-3xl font-bold">Gym Planner</h1>
       </header>
 
-      <main className="flex-grow container mx-auto px-4 pt-20 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <main className="flex-grow container mx-auto px-4 pt-24 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.entries(workouts).map(([day, dayWorkouts]) => (
-            <Card key={day} className="flex flex-col">
-              <CardHeader>
-                <CardTitle>{day}</CardTitle>
+            <Card key={day} className="flex flex-col bg-white dark:bg-gray-800 shadow-xl rounded-xl overflow-hidden transform transition-all duration-300 hover:scale-105">
+              <CardHeader className="bg-gradient-to-r from-blue-500 to-teal-500 text-white">
+                <CardTitle className="text-xl font-bold">{day}</CardTitle>
               </CardHeader>
-              <CardContent className="flex-grow">
+              <CardContent className="flex-grow p-4">
                 {dayWorkouts.map((workout) => (
-                  <div key={workout._id} className="flex justify-between items-center mb-2">
-                    <span>{workout.name} - {workout.sets}x{workout.reps} @ {workout.weight}kg</span>
-                    <Button variant="ghost" size="icon" onClick={() => deleteWorkout(workout._id)}>
+                  <div key={workout._id} className="flex justify-between items-center mb-3 p-2 bg-gray-100 dark:bg-gray-700 rounded-md shadow">
+                    <span className="text-gray-800 dark:text-gray-200">{workout.name} - {workout.sets}x{workout.reps} @ {workout.weight}kg</span>
+                    <Button variant="ghost" size="icon" onClick={() => deleteWorkout(workout._id)} className="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-600">
                       <Trash2 className="h-4 w-4" />
                     </Button>
                   </div>
                 ))}
               </CardContent>
-              <CardFooter>
+              <CardFooter className="p-4">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button variant="outline" className="w-full" onClick={() => setSelectedDay(day)}>
+                    <Button variant="outline" className="w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-semibold" onClick={() => setSelectedDay(day)}>
                       <Plus className="mr-2 h-4 w-4" /> Add Workout
                     </Button>
                   </DialogTrigger>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>Add Workout for {selectedDay}</DialogTitle>
+                  <DialogContent className="bg-white dark:bg-gray-800">
+                    <DialogHeader className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white p-4 rounded-t-lg">
+                      <DialogTitle className="text-xl font-bold">Add Workout for {selectedDay}</DialogTitle>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
                       <div className="grid grid-cols-4 items-center gap-4">
